@@ -128,7 +128,7 @@ module OrderLayout
           purchase_type: line[36],
           return_type: line[37],
           business_condition_pointer: line[38...44],
-          free_field: line[44...-1]
+          free_field: line[44...94]
         }
       elsif line[0] == '2' # Detalhe
         details << {
@@ -136,14 +136,14 @@ module OrderLayout
           order_number: line[1...13],
           product_code: line[13...26],
           amount: line[26...31],
-          discount: line[31...-1].insert(-3, '.').to_f
+          discount: line[31...36].insert(-3, '.').to_f
         }
       else # Trailer
         trailer = {
           register_type: line[0],
           order_number: line[1...13],
           number_of_units: line[13...18],
-          number_of_items: line[18...-1]
+          number_of_items: line[18...28]
         }
       end
     end
@@ -168,7 +168,7 @@ module OrderLayout
       affiliate_code: txt[61...65],
       client_uf: txt[65...67],
       reserved: txt[67...114],
-      sequential_number: txt[114...-1]
+      sequential_number: txt[114...120]
     }
   end
 
@@ -200,7 +200,7 @@ module OrderLayout
             order_number_distributor: line[44...56],
             reason_code: line[56...59],
             reason_description: line[59...109],
-            free_field: line[109...-1]
+            free_field: line[109...159]
         }
       elsif line[0] == '2' # Detalhe
         details << {
@@ -213,15 +213,15 @@ module OrderLayout
             granted: line[37...40],
             number_of_not_served: line[40...45],
             reason_code: line[45...48],
-            reason_description: line[48...-1]
+            reason_description: line[48...98]
         }
       else # Trailer
         trailer = {
             register_type: line[0],
-            order_numer: line[1...13],
+            order_number: line[1...13],
             number_of_lines: line[13...18],
             number_of_served_items: line[18...23],
-            number_of_not_served_items: line[23...-1]
+            number_of_not_served_items: line[23...28]
         }
       end
     end
@@ -243,7 +243,7 @@ module OrderLayout
       absence_return_description: txt[41...81],
       order_number: txt[81...91],
       reserved: txt[91...134],
-      sequential_number: txt[134...-1]
+      sequential_number: txt[134...140]
     }
   end
 
