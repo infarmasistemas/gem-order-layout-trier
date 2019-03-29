@@ -1,7 +1,7 @@
 require 'date'
 require 'net/ftp'
 
-module OrderLayout
+module OrderLayoutTrier
 
   $ftp_url = ''
   $ftp_port = 0
